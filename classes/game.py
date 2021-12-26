@@ -79,10 +79,41 @@ class Person:
             print("    " + str(i) + ":", item["item"].name, ":", item["item"].description, " x(" + str(item["qty"]) + ")")
             i += 1
 
+    def get_bar(self, current, max, length, divider):
+        bar = ""
+        bar_ticks = (current / max) * 100 / divider
+
+        while bar_ticks > 0:
+            bar += "█"
+            bar_ticks -= 1
+
+        while len(bar) < length:
+            bar += " "
+
+        return bar
+
+    def get_hp_string(self):
+        hp_string = str(self.hp) + "/" + str(self.maxhp)
+        hp_string_max_length = len(str(self.maxhp) + "/" + str(self.maxhp))
+
+        while len(hp_string) < hp_string_max_length:
+            hp_string = " " + hp_string
+
+        return hp_string
+
+    def get_mp_string(self):
+        mp_string = str(self.mp) + "/" + str(self.maxmp)
+        mp_string_max_length = len(str(self.maxmp) + "/" + str(self.maxmp))
+
+        while len(mp_string) < mp_string_max_length:
+            mp_string = " " + mp_string
+
+        return mp_string
+
     def get_stats(self):
         print("                _________________________           __________ ")
-        print(self.name + " " + str(self.hp) + "/" + str(self.maxhp) + " |"
-              + bcolors.OKGREEN + "█████████████████████████"
-              + bcolors.ENDC + "|   " + str(self.mp) + "/" + str(self.maxmp) + " |"
-              + bcolors.OKBLUE + "██████████"
+        print(self.name + " " + self.get_hp_string() + " |"
+              + bcolors.OKGREEN + self.get_bar(self.hp, self.maxhp, 25, 4)
+              + bcolors.ENDC + "|   " + self.get_mp_string() + " |"
+              + bcolors.OKBLUE + self.get_bar(self.mp, self.maxmp, 10, 10)
               + bcolors.ENDC + "|")

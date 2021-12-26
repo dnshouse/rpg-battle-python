@@ -25,13 +25,13 @@ player_items = [{"item": potion, "qty": 15}, {"item": hipotion, "qty": 5},
                 {"item": superpotion, "qty": 2}, {"item": elixer, "qty": 5},
                 {"item": hielixer, "qty": 15}, {"item": grenade, "qty": 5}]
 
-player1 = Person("Valos:", 460, 65, 60, 34, player_spells, player_items)
+player1 = Person("Valos:", 160, 15, 60, 34, player_spells, player_items)
 player2 = Person("Nick :", 460, 65, 60, 34, player_spells, player_items)
 player3 = Person("Robot:", 460, 65, 60, 34, player_spells, player_items)
 
 players = [player1, player2, player3]
 
-enemy = Person("", 1200, 65, 45, 25, [], [])
+enemy = Person("", 2500, 65, 45, 25, [], [])
 
 running = True
 
